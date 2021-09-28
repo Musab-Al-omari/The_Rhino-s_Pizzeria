@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "912972514364",
+    "project_id": "sada-sad",
+    "storage_bucket": "sada-sad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912972514364:android:9afc24e3f1245675d3ef39",
+        "android_client_info": {
+          "package_name": "com.example.rhino_pizzeria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912972514364-pj33vk3mds1iqkloc8ni2d64v8p0dou8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3XODzT5ill9-Vp_gR2xrcuCd--as61is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912972514364-pj33vk3mds1iqkloc8ni2d64v8p0dou8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
