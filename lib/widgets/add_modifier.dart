@@ -11,22 +11,24 @@ class AddModifire extends StatefulWidget {
 
 class _AddModifireState extends State<AddModifire> {
   // ignore: prefer_final_fields
-  Modifier _newModifier = Modifier(
-    modifierName: '',
-    modifierType: 'Radio',
-    modifierOptions: [],
-  );
+  Map _newModifier = {
+    'modifierName': '',
+    'modifierType': 'Radio',
+    'modifierOptions': [],
+  };
   int myCounter = 0;
 
   String _radioValue = 'Radio';
   void _handleRadioValueChange(value) {
     setState(() {
       _radioValue = value;
-      _newModifier = Modifier(
-          modifierName: _newModifier.modifierName,
-          modifierType: value,
-          modifierOptions: _newModifier.modifierOptions);
     });
+
+    _newModifier = {
+      'modifierName': _newModifier['modifierName'],
+      'modifierType': value,
+      'modifierOptions': _newModifier['modifierOptions']
+    };
   }
 
   @override
@@ -86,13 +88,12 @@ class _AddModifireState extends State<AddModifire> {
                               ),
                             ),
                             onChanged: (value) {
-                              setState(() {
-                                _newModifier = Modifier(
-                                    modifierName: value,
-                                    modifierType: _newModifier.modifierType,
-                                    modifierOptions:
-                                        _newModifier.modifierOptions);
-                              });
+                              _newModifier = {
+                                'modifierName': value,
+                                'modifierType': _newModifier['modifierType'],
+                                'modifierOptions':
+                                    _newModifier['modifierOptions']
+                              };
                             },
                           ),
                         )
@@ -165,12 +166,12 @@ class _AddModifireState extends State<AddModifire> {
                             ),
                             onChanged: (value) {
                               List myList = value.split('#');
-                              setState(() {
-                                _newModifier = Modifier(
-                                    modifierName: _newModifier.modifierName,
-                                    modifierType: _newModifier.modifierType,
-                                    modifierOptions: myList);
-                              });
+
+                              _newModifier = {
+                                'modifierName': _newModifier['modifierName'],
+                                'modifierType': _newModifier['modifierType'],
+                                'modifierOptions': myList
+                              };
                             },
                           ),
                         ),
@@ -182,11 +183,11 @@ class _AddModifireState extends State<AddModifire> {
                       child: ElevatedButton.icon(
                           onPressed: () {
                             widget.pushModifires(_newModifier);
-                            _newModifier = Modifier(
-                              modifierName: '',
-                              modifierType: 'Radio',
-                              modifierOptions: [],
-                            );
+                            _newModifier = {
+                              'modifierName': '',
+                              'modifierType': 'Radio',
+                              'modifierOptions': [],
+                            };
                             setState(() {
                               myCounter = 0;
                             });

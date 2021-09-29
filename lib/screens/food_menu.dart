@@ -27,7 +27,6 @@ class FoodMenu extends StatelessWidget {
               //     .collection('hello')
               //     .snapshots()
               //     .listen((event) {
-              //   print(event);
               // });
             },
             child: const Text('mainscreen'),

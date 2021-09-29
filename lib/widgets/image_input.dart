@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:path/path.dart' as path;
+import 'package:path/path.dart' as path;
 // import 'package:path_provider/path_provider.dart' as syspaths;
 
 class ImageInput extends StatefulWidget {
@@ -25,12 +25,11 @@ class _ImageInputState extends State<ImageInput> {
       _storedImage = File(imageFile.path);
     });
 
-    widget.onSelectedImage(imageFile.path);
+    widget.onSelectedImage(File(imageFile.path), path.basename(imageFile.path));
   }
 
   @override
   Widget build(BuildContext context) {
-    // print(_storedImage);
     return Row(
       children: <Widget>[
         Container(
