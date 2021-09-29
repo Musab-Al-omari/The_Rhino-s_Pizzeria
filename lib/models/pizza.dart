@@ -7,7 +7,7 @@ class Pizza with ChangeNotifier {
   final String title;
   final String imageUrl;
   final String description;
-  List<Map> modifiers;
+  var modifiers;
 
   Pizza(
       {required this.id,

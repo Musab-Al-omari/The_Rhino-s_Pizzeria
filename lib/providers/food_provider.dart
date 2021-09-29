@@ -5,17 +5,14 @@ import 'package:rhino_pizzeria/models/pizza.dart';
 import 'package:http/http.dart' as http;
 
 class FoodProvider with ChangeNotifier {
-  // ignore: prefer_final_fields
   List<Pizza> _myPizza = [];
-
+  final String url =
+      'https://finaltest-207ee-default-rtdb.europe-west1.firebasedatabase.app/Pizza.json';
   List<Pizza> get myPizza {
     return [..._myPizza];
   }
 
   Future<void> addPizza(Pizza newPizza) {
-    var url =
-        'https://finaltest-207ee-default-rtdb.europe-west1.firebasedatabase.app/Pizzajson';
-
     return http
         .post(Uri.parse(url),
             body: jsonEncode(
@@ -40,5 +37,30 @@ class FoodProvider with ChangeNotifier {
       print(onError);
       throw onError;
     });
+  }
+
+  Future<void> getPizza() async {
+    try {
+      var response = await http.get(Uri.parse(url));
+      var resData = jsonDecode(response.body);
+      List<Pizza> _newPizza = [];
+      resData.forEach((key, value) {
+        _newPizza.add(Pizza(
+            id: key,
+            description: value['description'],
+            imageUrl: value['imageUrl'],
+            title: value['title'],
+            modifiers: value['modifiers']));
+      });
+      _myPizza = _newPizza;
+      notifyListeners();
+    } catch (e) {
+      print('errrrrrrrrrrrrrrrrrrrrror');
+      print(e.toString());
+    }
+  }
+
+  Pizza getOnePizza(id) {
+    return _myPizza.firstWhere((element) => element.id == id);
   }
 }

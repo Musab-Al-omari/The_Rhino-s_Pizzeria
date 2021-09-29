@@ -1,9 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:rhino_pizzeria/providers/food_provider.dart';
+import 'package:rhino_pizzeria/widgets/my_grid_pizza.dart';
+import 'package:provider/provider.dart';
 import 'add_product.dart';
-// import 'package:cloud_firestRore/cloud_firestore.dart';
 
-class FoodMenu extends StatelessWidget {
+class FoodMenu extends StatefulWidget {
   const FoodMenu({Key? key}) : super(key: key);
+
+  @override
+  State<FoodMenu> createState() => _FoodMenuState();
+}
+
+class _FoodMenuState extends State<FoodMenu> {
+  var init = true;
+  var _isLoading = false;
+
+  @override
+  void didChangeDependencies() {
+    if (init) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Provider.of<FoodProvider>(context).getPizza().then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      }).catchError((onError) {
+        setState(() {
+          _isLoading = false;
+        });
+        throw onError;
+      });
+
+      init = false;
+    }
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +52,11 @@ class FoodMenu extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              // FirebaseFirestore.instance
-              //     .collection('hello')
-              //     .snapshots()
-              //     .listen((event) {
-              // });
-            },
-            child: const Text('mainscreen'),
-          )
-        ],
-      ),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : MyGridPizza(),
     );
   }
 }

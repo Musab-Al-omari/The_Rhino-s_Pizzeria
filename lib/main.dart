@@ -4,6 +4,7 @@ import 'package:rhino_pizzeria/providers/food_provider.dart';
 import 'package:rhino_pizzeria/screens/add_product.dart';
 import 'package:rhino_pizzeria/screens/food_menu.dart';
 import 'package:provider/provider.dart';
+import 'package:rhino_pizzeria/screens/one_pizza.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         routes: {
           AddProductScreen.AddProductScreenRoute: (context) =>
               AddProductScreen(),
+          OnePizza.OnePizzaRoute: (context) => OnePizza(),
         },
       ),
     );
