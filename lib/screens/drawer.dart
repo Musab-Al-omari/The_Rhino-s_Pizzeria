@@ -15,6 +15,42 @@ class MyDrawer extends StatelessWidget {
             Column(
               children: [
                 Container(
+                  margin: EdgeInsets.only(top: 30),
+                  child: Consumer<Auth>(
+                    builder: (context, myAuth, child) => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage:
+                              NetworkImage(myAuth.user!.photoUrl as String),
+                          radius: 30,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              myAuth.user!.displayName as String,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Wrap(children: [
+                              Text(
+                                myAuth.user!.email as String,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ])
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
                   height: 120,
                   width: double.infinity,
                   padding: EdgeInsets.all(20),

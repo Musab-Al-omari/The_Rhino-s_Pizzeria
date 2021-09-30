@@ -17,6 +17,8 @@ class _FoodMenuState extends State<FoodMenu> {
   var init = true;
   var _isLoading = false;
 
+  get retutn => null;
+
   @override
   void didChangeDependencies() {
     if (init) {
@@ -42,6 +44,7 @@ class _FoodMenuState extends State<FoodMenu> {
 
   @override
   Widget build(BuildContext context) {
+    final myUser = Provider.of<Auth>(context).userObj;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -49,12 +52,13 @@ class _FoodMenuState extends State<FoodMenu> {
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .pushNamed(AddProductScreen.AddProductScreenRoute);
-              },
-              icon: const Icon(Icons.add))
+          if (myUser!.isAdmin)
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamed(AddProductScreen.AddProductScreenRoute);
+                },
+                icon: const Icon(Icons.add_circle_outline_sharp))
         ],
       ),
       body: _isLoading
@@ -63,6 +67,15 @@ class _FoodMenuState extends State<FoodMenu> {
             )
           : MyGridPizza(),
       drawer: const MyDrawer(),
+      floatingActionButton: myUser.isAdmin == false
+          ? null
+          : IconButton(
+              iconSize: 40,
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed(AddProductScreen.AddProductScreenRoute);
+              },
+              icon: const Icon(Icons.add_circle_outline_sharp)),
     );
   }
 }
