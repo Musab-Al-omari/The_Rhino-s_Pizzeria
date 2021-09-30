@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rhino_pizzeria/providers/food_provider.dart';
+import 'package:rhino_pizzeria/screens/drawer.dart';
 import 'package:rhino_pizzeria/widgets/my_grid_pizza.dart';
 import 'package:provider/provider.dart';
 import 'add_product.dart';
@@ -42,7 +43,10 @@ class _FoodMenuState extends State<FoodMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('main'),
+        title: const Text(
+          'Food Menu',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
         actions: [
           IconButton(
               onPressed: () {
@@ -57,6 +61,7 @@ class _FoodMenuState extends State<FoodMenu> {
               child: CircularProgressIndicator(),
             )
           : MyGridPizza(),
+      drawer: const MyDrawer(),
     );
   }
 }

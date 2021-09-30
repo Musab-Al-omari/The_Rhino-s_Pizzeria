@@ -26,7 +26,7 @@ class MyOptions extends StatelessWidget {
           child: Column(
             children: [
               if (modifires[index]['modifierType'] == 'Select')
-                Select(modifires[index])
+                MySelect(modifires[index])
               else if (modifires[index]['modifierType'] == 'Radio')
                 MyRadio(modifires[index])
               else if (modifires[index]['modifierType'] == 'Checkbox')

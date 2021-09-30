@@ -10,19 +10,24 @@ class MyCheckbox extends StatefulWidget {
 
 class _MyCheckboxState extends State<MyCheckbox> {
   List newList = [];
-  late bool checkedValue;
+  var newMap = {};
+
   @override
   void initState() {
     newList = widget.myModifire['modifierOptions'];
-    checkedValue = true;
+    newList.forEach((element) {
+      newMap[element] = false;
+      print(newMap['$element']);
+    });
+
     super.initState();
   }
 
-  void _onChangee(value) {
-    setState(() {
-      checkedValue = value!;
-    });
-  }
+  // void _onChangee(value) {
+  //   setState(() {
+  //     checkedValue = value!;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +43,19 @@ class _MyCheckboxState extends State<MyCheckbox> {
           ),
           ...newList
               .map((e) => Container(
-                    height: 25,
+                    height: 45,
                     child: CheckboxListTile(
+                      key: Key(e.toString()),
                       title: Text(
                         e.toString(),
                         style: TextStyle(fontSize: 20),
                       ),
-                      value: checkedValue,
-                      onChanged: _onChangee,
+                      value: newMap[e],
+                      onChanged: (value) {
+                        setState(() {
+                          newMap[e] = value!;
+                        });
+                      },
                     ),
                   ))
               .toList()

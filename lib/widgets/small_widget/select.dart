@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
 
-class Select extends StatelessWidget {
+class MySelect extends StatefulWidget {
   var myModifire;
-  Select(this.myModifire);
+  MySelect(this.myModifire);
+
+  @override
+  State<MySelect> createState() => _MySelectState();
+}
+
+class _MySelectState extends State<MySelect> {
+  var selectedRegion;
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      hint: Text(myModifire['modifierName']),
-      items: <String>[...myModifire['modifierOptions']].map((String value) {
+      hint: Text(widget.myModifire['modifierName']),
+      value: selectedRegion,
+      items:
+          <String>[...widget.myModifire['modifierOptions']].map((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
         );
       }).toList(),
-      onChanged: (_) {},
+      onChanged: (value) {
+        setState(() {
+          selectedRegion = value;
+        });
+      },
     );
   }
 }

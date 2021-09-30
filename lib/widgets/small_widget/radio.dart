@@ -35,7 +35,7 @@ class _MyRadioState extends State<MyRadio> {
           ),
           ...newList
               .map((e) => Container(
-                    height: 25,
+                    height: 35,
                     child: ListTile(
                       title: Text(e),
                       leading: Radio(

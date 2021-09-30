@@ -15,7 +15,10 @@ class OnePizza extends StatelessWidget {
     Pizza myPizza = Provider.of<FoodProvider>(context).getOnePizza(id);
     return Scaffold(
       appBar: AppBar(
-        title: Text(myPizza.title),
+        title: Text(
+          myPizza.title,
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -31,6 +34,7 @@ class OnePizza extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   footer: GridTileBar(
+                    backgroundColor: const Color.fromRGBO(194, 239, 179, 80),
                     title: Text(
                       myPizza.title,
                       textAlign: TextAlign.center,

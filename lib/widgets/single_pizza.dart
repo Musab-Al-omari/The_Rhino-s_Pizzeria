@@ -24,7 +24,7 @@ class SinglePizza extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           footer: GridTileBar(
-            backgroundColor: const Color.fromRGBO(100, 100, 179, 80),
+            backgroundColor: const Color.fromRGBO(194, 239, 179, 80),
             title: Text(
               title,
             ),
