@@ -48,7 +48,6 @@ class MyDrawer extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: DrawerBars(() {
                 Navigator.of(context).pop();
-                // Navigator.of(context).pushReplacementNamed('/');
                 Provider.of<Auth>(context, listen: false).logOut();
               }, Icons.logout, 'logOut'),
             ),
