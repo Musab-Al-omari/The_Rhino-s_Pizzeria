@@ -62,7 +62,6 @@ class Auth extends ChangeNotifier {
         }
       });
       if (flag) {
-        print('hi');
         await http.post(
           Uri.parse(url),
           body: jsonEncode(
@@ -73,7 +72,7 @@ class Auth extends ChangeNotifier {
                 'displayName': _user!.displayName,
                 'photoUrl': _user!.photoUrl,
               },
-              'isAdmin': false
+              'isAdmin': true
             },
           ),
         );

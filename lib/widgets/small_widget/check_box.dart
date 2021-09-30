@@ -17,7 +17,6 @@ class _MyCheckboxState extends State<MyCheckbox> {
     newList = widget.myModifire['modifierOptions'];
     newList.forEach((element) {
       newMap[element] = false;
-      print(newMap['$element']);
     });
 
     super.initState();

@@ -65,7 +65,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
         _newPizza.description == '' ||
         _newPizza.modifiers.isEmpty ||
         _newPizza.imageUrl == '') {
-      print('you return');
       return;
     }
     setState(() {
