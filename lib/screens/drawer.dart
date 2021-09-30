@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rhino_pizzeria/providers/auth.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -46,8 +48,8 @@ class MyDrawer extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: DrawerBars(() {
                 Navigator.of(context).pop();
-                Navigator.of(context).pushReplacementNamed('/');
-                // Provider.of<Auth>(context, listen: false).logOut();
+                // Navigator.of(context).pushReplacementNamed('/');
+                Provider.of<Auth>(context, listen: false).logOut();
               }, Icons.logout, 'logOut'),
             ),
           ],

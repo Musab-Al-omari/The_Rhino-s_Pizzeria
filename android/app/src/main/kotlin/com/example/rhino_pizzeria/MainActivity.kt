@@ -1,4 +1,4 @@
-package com.example.rhino_pizzeria
+package com.musab.rhino_pizzeria
 
 import io.flutter.embedding.android.FlutterActivity
 
